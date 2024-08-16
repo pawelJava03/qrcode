@@ -22,11 +22,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        // Zezwól na dostęp do plików QR kodów i innych zasobów statycznych bez uwierzytelniania
                         .requestMatchers("/qrCodes/**", "/css/**", "/js/**", "/images/**").permitAll()
-                        // Zezwól na dostęp do stron rejestracji, logowania i błędów
                         .requestMatchers("/register", "/login", "/error").permitAll()
-                        // Wymagaj uwierzytelniania dla wszystkich innych ścieżek
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

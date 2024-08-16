@@ -8,6 +8,6 @@ public class LoginController {
 
     @GetMapping("/login")
     public String showLoginPage() {
-        return "login"; // Upewnij się, że istnieje widok 'login.html' w odpowiednim katalogu
+        return "login";
     }
 }

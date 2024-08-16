@@ -19,7 +19,6 @@ public class QRCodeController {
     private final QRCodeRepository qrCodeRepository;
     private final UserRepository userRepository;
 
-    // Wstrzykiwanie zależności przez konstruktor
     public QRCodeController(QRCodeService qrCodeService, QRCodeRepository qrCodeRepository, UserRepository userRepository) {
         this.qrCodeService = qrCodeService;
         this.qrCodeRepository = qrCodeRepository;
@@ -34,7 +33,6 @@ public class QRCodeController {
         if (user != null) {
             model.addAttribute("qrCodes", qrCodeRepository.findByUser(user));
         } else {
-            // Obsługuje przypadek, gdy użytkownik nie został znaleziony
             model.addAttribute("qrCodes", null);
             model.addAttribute("error", "User not found");
         }
@@ -60,11 +58,9 @@ public class QRCodeController {
 
                 return "redirect:/dashboard";
             } else {
-                // Obsługuje przypadek, gdy użytkownik nie został znaleziony
                 return "redirect:/error?message=User+not+found";
             }
         } catch (Exception e) {
-            // Obsługuje błędy związane z generowaniem kodu QR
             return "redirect:/error?message=Error+generating+QR+code";
         }
     }
