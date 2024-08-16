@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Dashboard</title>
+</head>
+<body>
+<h1>Hello, <span th:text="${#authentication.name}">User</span>!</h1>
+
+<form method="post" action="/generate" th:action="@{/generate}" th:object="${qrCode}">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <label for="url">Enter the URL:</label>
+    <input type="text" id="url" name="url" required>
+    <button type="submit">Generate QR Code</button>
+</form>
+
+<h2>Your generated QR codes:</h2>
+<ul>
+    <li th:each="qr : ${qrCodes}">
+        <a th:href="@{/qrCodes/{filePath}(filePath=${qr.qrCodeImagePatch})}" th:text="${qr.url}"></a>
+    </li>
+</ul>
+
+</body>
+</html>
