@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/qr_code
+      SPRING_DATASOURCE_USERNAME: pawel
+      SPRING_DATASOURCE_PASSWORD: pawel
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: qr_code
+      POSTGRES_USER: pawel
+      POSTGRES_PASSWORD: pawel
+    ports:
+      - "5432:5432"
