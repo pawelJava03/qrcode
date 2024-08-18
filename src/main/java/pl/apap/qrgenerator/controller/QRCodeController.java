@@ -4,8 +4,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
+import org.springframework.core.io.UrlResource;
+import org.springframework.core.io.Resource;
 import pl.apap.qrgenerator.Data.QRCode;
 import pl.apap.qrgenerator.Data.User;
 import pl.apap.qrgenerator.repository.QRCodeRepository;
@@ -13,13 +18,12 @@ import pl.apap.qrgenerator.repository.UserRepository;
 import pl.apap.qrgenerator.service.QRCodeService;
 
 import java.io.File;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 public class QRCodeController {
-
-    private static final Logger logger = LoggerFactory.getLogger(QRCodeController.class);
 
     private final QRCodeService qrCodeService;
     private final QRCodeRepository qrCodeRepository;
@@ -59,37 +63,42 @@ public class QRCodeController {
                     directory.mkdirs();
                 }
 
-                String filePath = directoryPath + "qr_" + user.getUsername() + "_" + System.currentTimeMillis() + ".png";
+                String fileName = "qr_" + user.getUsername() + "_" + System.currentTimeMillis() + ".png";
+                String filePath = directoryPath + fileName;
 
                 qrCodeService.generateQRCodeImage(url, 350, 350, filePath);
 
-                String relativePath = "/qrCodes/" + new File(filePath).getName();
-
                 QRCode qrCode = new QRCode();
                 qrCode.setUrl(url);
-                qrCode.setQrCodeImagePatch(relativePath);
+                qrCode.setFilePath(filePath);  // Zapisujemy ścieżkę do pliku
                 qrCode.setUser(user);
                 qrCodeRepository.save(qrCode);
-
-                System.out.println("Generated QR code path: " + qrCode.getQrCodeImagePatch());
 
                 return "redirect:/dashboard";
             } else {
                 return "redirect:/error?message=User+not+found";
             }
         } catch (Exception e) {
-            logger.error("Error generating QR code", e);
+            e.printStackTrace();
             return "redirect:/error?message=Error+generating+QR+code";
         }
     }
 
+    @GetMapping("/qrCodes/{fileName}")
+    public ResponseEntity<Resource> getQRCodeImage(@PathVariable String fileName) {
+        try {
+            Path file = Paths.get(System.getProperty("user.dir") + "/qrCodes/").resolve(fileName);
+            Resource resource = new UrlResource(file.toUri());
 
-    private String generateFilePath(String username) {
-        String directoryPath = System.getProperty("user.dir") + "/src/main/resources/static/qrCodes/";
-        File directory = new File(directoryPath);
-        if (!directory.exists()) {
-            directory.mkdirs();
+            if (resource.exists() || resource.isReadable()) {
+                return ResponseEntity.ok()
+                        .contentType(MediaType.IMAGE_PNG)
+                        .body(resource);
+            } else {
+                throw new RuntimeException("Could not read the file!");
+            }
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Error: " + e.getMessage());
         }
-        return directoryPath + "qr_" + username + "_" + System.currentTimeMillis() + ".png";
     }
 }
