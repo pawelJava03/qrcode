@@ -36,7 +36,7 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .exceptionHandling(exception -> exception
-                        .accessDeniedPage("/403") // Strona 403
+                        .accessDeniedPage("/403")
                 );
 
         return http.build();
