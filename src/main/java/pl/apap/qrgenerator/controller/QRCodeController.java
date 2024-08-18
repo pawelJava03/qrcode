@@ -70,7 +70,7 @@ public class QRCodeController {
 
                 QRCode qrCode = new QRCode();
                 qrCode.setUrl(url);
-                qrCode.setFilePath(filePath);  // Zapisujemy ścieżkę do pliku
+                qrCode.setFilePath(filePath);
                 qrCode.setUser(user);
                 qrCodeRepository.save(qrCode);
 

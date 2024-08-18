@@ -89,3 +89,50 @@
         border-image-source: linear-gradient(450deg, black, darkslateblue, rebeccapurple, mediumorchid, violet);
     }
 }
+
+/* NAVBAR */
+/* Navbar container */
+.navbar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Burger icon */
+.menu-icon {
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none; /* Ukrywanie menu domyślnie */
+    flex-direction: column;
+    background-color: rgba(72, 61, 139, 0.9);
+    border-radius: 8px;
+    position: absolute;
+    top: 40px; /* Pozycja w odniesieniu do ikony */
+    right: 0;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Links in dropdown menu */
+.dropdown-menu a {
+    padding: 12px 16px;
+    text-decoration: none;
+    color: white;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #1E90FF; /* Kolor tła po najechaniu */
+}
+
+/* Show the dropdown menu */
+.show {
+    display: flex;
+}
