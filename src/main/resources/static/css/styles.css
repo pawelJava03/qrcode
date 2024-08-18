@@ -1,0 +1,91 @@
+.dashboard-title{
+    color: white;
+}
+.enter-url{
+    color: white;
+}
+
+.subtitle{
+    color: white;
+}
+.item-text{
+    color: white;
+}
+.qrcode-icon{
+    color: white;
+}
+
+.animate-button {
+    height: 35px;
+    width: 220px;
+    display: inline-flex;
+    background-color: rgba(72, 61, 139, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.animate-button i {
+    transition: transform 0.3s ease;
+    margin-right: 15px;
+}
+
+.animate-button:hover i {
+    transform: translateX(10px);
+}
+
+.animate-button:hover {
+    background-color: rgba(72, 61, 139, 0.7);
+    color: blueviolet;
+}
+
+.input {
+    background-color: rgba(72, 61, 139, 0.7);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.3) inset;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+    height: 35px;
+    width: 220px;
+}
+
+.input:focus {
+    border: 2px solid rebeccapurple;
+    box-shadow: 0px 0px 5px 1px rgba(138, 43, 226, 0.5);
+}
+
+.list-group-item{
+    background-color: rgba(72, 61, 139, 0.7);
+    transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+    cursor: pointer;
+    border: 5px solid transparent;
+
+}
+.list-group-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    animation: darkPurpleBorder 3s linear infinite;
+}
+
+@keyframes darkPurpleBorder {
+    0% {
+        border-image-source: linear-gradient(90deg, black, darkslateblue, rebeccapurple, mediumorchid, violet);
+    }
+    100% {
+        border-image-source: linear-gradient(450deg, black, darkslateblue, rebeccapurple, mediumorchid, violet);
+    }
+}
