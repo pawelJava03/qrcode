@@ -90,8 +90,7 @@
     }
 }
 
-/* NAVBAR */
-/* Navbar container */
+/* BURGER */
 .navbar {
     position: absolute;
     top: 20px;
@@ -99,27 +98,28 @@
     z-index: 1000;
 }
 
-/* Burger icon */
 .menu-icon {
     cursor: pointer;
     font-size: 24px;
     color: white;
+    transition: transform 0.5s ease;
 }
 
-/* Dropdown menu */
 .dropdown-menu {
-    display: none; /* Ukrywanie menu domyślnie */
+    max-height: 0;
+    overflow: hidden;
     flex-direction: column;
     background-color: rgba(72, 61, 139, 0.9);
     border-radius: 8px;
     position: absolute;
-    top: 40px; /* Pozycja w odniesieniu do ikony */
+    top: 40px;
     right: 0;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    display: flex;
 }
 
-/* Links in dropdown menu */
 .dropdown-menu a {
     padding: 12px 16px;
     text-decoration: none;
@@ -129,10 +129,31 @@
 }
 
 .dropdown-menu a:hover {
-    background-color: #1E90FF; /* Kolor tła po najechaniu */
+    background-color: #1E90FF;
 }
 
-/* Show the dropdown menu */
 .show {
-    display: flex;
+    max-height: 200px;
+    opacity: 1;
+}
+
+.menu-icon.change {
+    transform: rotate(90deg);
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: -20px;
+    margin-top: -50px;
+}
+.logo-img{
+    height: 200px;
+}
+.url-form{
+    text-align: center;
+    padding-bottom: 50px;
+}
+.dashboard-title{
+    text-align: center;
+    align-items: center;
 }
