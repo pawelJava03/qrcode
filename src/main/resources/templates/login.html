@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Logowanie</title>
+    <title>Login</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
-<body>
-<h1>Logowanie</h1>
-<form th:action="@{/login}" method="post">
+<body style="background-image: url('/images/z12-kopia.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+<div class="container">
+
+    <div class="logo-container">
+        <img src="/images/logo.png" alt="Logo" class="logo-img">
+    </div>
+
+<h1 class="dashboard-title">Login</h1>
+
+<form th:action="@{/login}" method="post" class="login-form">
     <div>
-        <label for="username">Nazwa użytkownika:</label>
-        <input type="text" id="username" name="username" required/>
+<!--        <label for="username" class="login-label" >Nazwa użytkownika:</label>-->
+        <input type="text" id="username" name="username" class="input-login" placeholder="Username" required/>
     </div>
     <div>
-        <label for="password">Hasło:</label>
-        <input type="password" id="password" name="password" required/>
+<!--        <label for="password" class="login-label">Hasło:</label>-->
+        <input type="password" id="password" name="password" class="input-login" placeholder="Password" required/>
     </div>
     <div>
-        <button type="submit">Zaloguj się</button>
+        <button type="submit" class="animate-button">Login <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 </form>
 
 <div th:if="${param.error}">
-    <p style="color:red;">Błędna nazwa użytkownika lub hasło.</p>
+    <p style="color:red;">Wrong username or password.</p>
 </div>
 
 <div th:if="${param.logout}">
-    <p style="color:green;">Zostałeś wylogowany.</p>
+    <p style="color:green;">You have been logged out.</p>
+</div>
 </div>
 </body>
 </html>

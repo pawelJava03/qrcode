@@ -19,8 +19,15 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@RequestParam("username") String username, @RequestParam("password") String password) {
-        userService.registerUser(username, password);
-        return "redirect:/login";
+    public String registerUser(@RequestParam("username") String username,
+                               @RequestParam("password") String password,
+                               @RequestParam("confirm-password") String confirmPassword) {
+        if (password.equals(confirmPassword)) {
+            userService.registerUser(username, password);
+            return "redirect:/login";
+        } else {
+            // Możesz dodać logikę obsługi błędów, np. przekierowanie z komunikatem
+            return "register?error";
+        }
     }
 }

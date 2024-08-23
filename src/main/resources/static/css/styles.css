@@ -7,6 +7,7 @@
 
 .subtitle{
     color: white;
+    text-shadow: 2px 2px black;
 }
 .item-text{
     color: white;
@@ -30,6 +31,7 @@
     align-items: center;
     gap: 10px;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    justify-content: center;
 }
 
 .animate-button i {
@@ -70,7 +72,6 @@
     transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
     cursor: pointer;
     border: 5px solid transparent;
-
 }
 .list-group-item:hover {
     transform: scale(1.03);
@@ -156,4 +157,53 @@
 .dashboard-title{
     text-align: center;
     align-items: center;
+}
+
+/*  Login page  */
+.input-login {
+    background-color: rgba(72, 61, 139, 0.7);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.3) inset;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+    height: 25px;
+    width: 200px;
+}
+.input-login:focus {
+    border: 2px solid rebeccapurple;
+    box-shadow: 0px 0px 5px 1px rgba(138, 43, 226, 0.5);
+}
+.login-label{
+    color: white;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Register */
+.password-container {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.password-container input[type="password"] {
+    padding-right: 2.5rem;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
 }

@@ -1,22 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>Rejestracja</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<h1>Rejestracja użytkownika</h1>
-<form th:action="@{/register}" method="post">
-    <div>
-        <label for="username">Nazwa użytkownika:</label>
-        <input type="text" id="username" name="username"/>
+<h1>Register</h1>
+<form action="/register" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <br>
+    <div class="password-container">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <i id="toggle-password-icon-password" class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('password')"></i>
     </div>
-    <div>
-        <label for="password">Hasło:</label>
-        <input type="password" id="password" name="password"/>
+    <br>
+    <div class="password-container">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+        <i id="toggle-password-icon-confirm-password" class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('confirm-password')"></i>
     </div>
-    <div>
-        <button type="submit">Zarejestruj</button>
-    </div>
+    <br>
+    <button type="submit">Register</button>
 </form>
+<div>
+    <a href="/login">Already have an account? Login here</a>
+</div>
+
+<script src="/js/togglePasswordVisibility.js"></script>
+
 </body>
 </html>
