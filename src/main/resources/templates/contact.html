@@ -22,16 +22,18 @@
     </div>
 
 </head>
-<body>
+<body style="background-image: url('/images/z12-kopia.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
 <div class="title">
-    <h1> ADMIN DASHBOARD </h1>
-    <h3> Hello, <span th:text="${#authenntication.name}">User</span> </h3>
+    <h2> Kontakt </h2>
 
-    <p> nowe opcje wkrótce. (dodać opcje i auth tylko dla userów z dodanym role=admin</p>
-    <br>
-    <p>Tylko admin może dodać sobie ręcznie nowego admina</p>
-
-
+<p>formularz</p>
+    <form method="post" class="url-form">
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="E-mail address">
+        <input type="text" placeholder="Subject">
+        <input type="text" placeholder="Message">
+        <button type="submit" class="animate-button"> Wylij<i class="fa-solid fa-arrow-right"></i></button>
+    </form>
 
 </div>
 </body>
