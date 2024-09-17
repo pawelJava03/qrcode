@@ -1,31 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
-<body>
-<h1>Register</h1>
-<form action="/register" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
+<body style="background-image: url('/images/z12-kopia.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+<div class="logo-container">
+    <img src="/images/logo.png" alt="Logo" class="logo-img">
+</div>
+
+<h1 class="dashboard-title">Register</h1>
+<form action="/register" method="post" class="login-form">
+    <input type="text" id="username" name="username" required class="input-login" placeholder="Username">
     <br>
     <div class="password-container">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" required placeholder="Password" class="input-login">
         <i id="toggle-password-icon-password" class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('password')"></i>
     </div>
     <br>
     <div class="password-container">
-        <label for="confirm-password">Confirm Password:</label>
-        <input type="password" id="confirm-password" name="confirm-password" required>
+        <input type="password" id="confirm-password" name="confirm-password" required class="input-login" placeholder="Confirm password">
         <i id="toggle-password-icon-confirm-password" class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('confirm-password')"></i>
     </div>
     <br>
-    <button type="submit">Register</button>
+    <button type="submit" class="animate-button">Register<i class="fa-solid fa-arrow-right"></i></button>
 </form>
 <div>
     <a href="/login">Already have an account? Login here</a>

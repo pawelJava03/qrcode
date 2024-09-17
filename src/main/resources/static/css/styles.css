@@ -192,10 +192,9 @@
 /* Register */
 .password-container {
     position: relative;
-    margin-bottom: 1rem;
-}
+ }
 
-.password-container input[type="password"] {
+. password-container input[type="password"] {
     padding-right: 2.5rem;
 }
 
